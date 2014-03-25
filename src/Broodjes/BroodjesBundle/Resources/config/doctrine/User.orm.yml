@@ -1,0 +1,23 @@
+Broodjes\BroodjesBundle\Entity\User:
+    type: entity
+    table: fos_user
+    id:
+        id:
+            type: integer
+            id: true
+            generator:
+                strategy: AUTO
+    fields:
+        firstName:
+            type: string
+            length: 50
+        lastName:
+            type: string
+            length: 50
+        email:
+            type: string
+            length: 100
+        password:
+            type: string
+            length: 50
+    lifecycleCallbacks: {  }
