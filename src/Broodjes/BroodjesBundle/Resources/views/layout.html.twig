@@ -1,0 +1,23 @@
+{% extends "::base.html.twig" %}
+
+{% block stylesheets %}
+<link rel="stylesheet" href="{{asset('bundles/broodjes/css/main.css')}}">
+{% endblock %}
+
+{% block title %}Broodjes - {% endblock %}
+
+{% block body %}
+<div class="container">
+    <nav class="clearfix">
+        <ul class="listleft clearfix">
+            <li><a href="{{path('broodjes_homepage')}}">Home</a></li>
+        </ul>
+        <ul class="listright clearfix">
+            <li><a href="#">Login</a></li>
+        </ul>
+    </nav>
+    <div class="content">
+        {% block content %}{% endblock %}
+    </div>
+</div>
+{% endblock %}

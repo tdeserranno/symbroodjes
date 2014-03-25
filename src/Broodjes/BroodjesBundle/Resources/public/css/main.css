@@ -1,0 +1,72 @@
+/* 
+    Created on : 25-mrt-2014, 15:27:05
+    Author     : Thomas Deserranno
+*/
+
+/*^^^^ LAYOUT ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^*/
+.container {
+    width: 80%;
+    margin: 0 auto;
+}
+
+/*^^^^ COLORS ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^*/
+body {
+    background: #F7EDCB;
+}
+
+nav {
+    background: rgba(0, 0, 0, 0.3);
+}
+
+.content {
+    background: rgba(0, 0, 0, 0.1);
+}
+
+/*^^^^ NAVIGATION ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^*/
+nav {
+    width: 100%;
+}
+nav ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+nav li a {
+    text-decoration: none;
+    color: #000;
+    font-size: 2em;
+    font-weight: bold;
+}
+
+/*^^^^ HELPER ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^*/
+.listleft {
+    float: left;
+}
+.listright {
+    float: right;
+}
+.listleft li, .listright li {
+    float: left;
+}
+.clearfix:after {
+    content: ".";
+    display: block;
+    clear: both;
+    visibility: hidden;
+    line-height: 0;
+    height: 0;
+}
+ 
+.clearfix {
+    display: inline-block;
+}
+ 
+html[xmlns] .clearfix {
+    display: block;
+}
+ 
+* html .clearfix {
+    height: 1%;
+}
+/*^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^*/
