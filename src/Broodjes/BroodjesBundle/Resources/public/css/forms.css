@@ -1,0 +1,36 @@
+/* 
+    Created on : 26-mrt-2014, 15:54:21
+    Author     : cyber01
+*/
+
+.form_row {
+    margin: 0.5em;
+}
+.form_row label{
+    display: inline-block;
+    width: 15%;
+    min-width: 7em;
+    vertical-align: middle;
+}
+.form_row input[type='text'], .form_row input[type='password'] {
+    width: 30%;
+    min-width: 10em;
+}
+.form_row input[type='checkbox'] {
+    margin-left: 15%;
+}
+input[type='submit'] {
+    margin-left: 15%;
+}
+
+.form_row textarea {
+    width: 40%;
+    min-width: 12em;
+    height: 6em;
+    vertical-align: top;
+}
+
+.form_row .error{
+    margin-left: 1em;
+    width: auto;
+}
