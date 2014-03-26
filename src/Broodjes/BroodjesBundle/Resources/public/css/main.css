@@ -3,10 +3,21 @@
     Author     : Thomas Deserranno
 */
 
+/*^^^^ NORMALIZE ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^*/
+@import "normalize.css";
+
 /*^^^^ LAYOUT ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^*/
 .container {
     width: 80%;
     margin: 0 auto;
+}
+
+.content {
+    margin-top: 1em;
+    min-height: 25em;
+}
+.content h1 {
+    padding-left: 3em;
 }
 
 /*^^^^ COLORS ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^*/
@@ -21,10 +32,22 @@ nav {
 .content {
     background: rgba(0, 0, 0, 0.1);
 }
+.content h1 {
+    background: rgba(255,0,0,0.5);
+    color: #F7EDCB;
+}
+
+nav li a {
+    background: rgba(255, 255, 255, 1.0);
+    border-color: rgba(255, 255, 255, 1.0);
+    color: #ED772B;
+}
 
 /*^^^^ NAVIGATION ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^*/
 nav {
     width: 100%;
+    padding: 1em;
+    box-sizing: border-box;
 }
 nav ul {
     list-style: none;
@@ -42,10 +65,12 @@ nav li a {
     display: table-cell;
     vertical-align: middle;
     text-decoration: none;
-    color: #000;
-    font-size: 2em;
+    font-size: 1.25em;
     font-weight: bold;
-    padding: 0.5em 1em;
+    padding: 0 1em;
+    border-width: 8px;
+    border-style: solid;
+    border-radius: 5px;
 }
 
 /*^^^^ HELPER ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^*/
