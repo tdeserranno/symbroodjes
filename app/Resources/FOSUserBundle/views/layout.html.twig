@@ -3,5 +3,8 @@
 {% block title %}{{parent()}}Login{% endblock %}
 
 {% block content %}
+<h1>{% block header %}{% endblock %}</h1>
+<div class="container">
     {% block fos_user_content %}{% endblock %}
+</div>
 {% endblock %}

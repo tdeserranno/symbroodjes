@@ -1,0 +1,18 @@
+{% extends "FOSUserBundle::layout.html.twig" %}
+
+{% trans_default_domain 'FOSUserBundle' %}
+
+{% block stylesheets %}
+{{parent()}}
+<link rel="stylesheet" href="{{asset('bundles/broodjes/css/forms.css')}}">
+{% endblock %}
+
+{%block title%}{{parent()}}Login{%endblock%}
+
+{% block header %}Registreer
+{% endblock %}
+
+
+{% block fos_user_content %}
+{% include "FOSUserBundle:Registration:register_content.html.twig" %}
+{% endblock fos_user_content %}
