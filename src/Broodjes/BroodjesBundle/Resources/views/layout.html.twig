@@ -11,6 +11,9 @@
     <nav class="clearfix">
         <ul class="listleft clearfix">
             <li><a href="{{path('broodjes_homepage')}}">Home</a></li>
+            {% if app.user %}
+            <li><a href="{{path('broodjes_bestel')}}">Bestel</a></li>
+            {% endif %}
         </ul>
         <ul class="listright clearfix">
             {%if app.user%}

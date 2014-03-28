@@ -1,3 +1,6 @@
 broodjes_homepage:
     pattern:  /
     defaults: { _controller: BroodjesBundle:Home:index }
+broodjes_bestel:
+    pattern:  /bestel
+    defaults: { _controller: BroodjesBundle:Bestel:index }
