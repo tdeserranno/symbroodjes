@@ -73,3 +73,9 @@ fos_user:
     db_driver: orm
     firewall_name: main
     user_class: Broodjes\BroodjesBundle\Entity\User
+    registration:
+        confirmation:
+            enabled: true
+    from_email:
+        address: thomas.deserranno@gmail.com
+        sender_name: NoReply symBroodjes
