@@ -19,6 +19,19 @@ class BestelController extends Controller
 {
     public function indexAction()
     {
-        return $this->render('BroodjesBundle:Bestel:index.html.twig');
+        //retrieve all breadtypes
+        //build query
+        $repository = $this->getDoctrine()->getRepository('BroodjesBundle:BreadType');
+        $query = $repository->createQueryBuilder('bread')
+                ->getQuery();
+        //get breadtypes
+        $breadtypes = $query->getResult();
+        
+        
+        //render page
+        return $this->render('BroodjesBundle:Bestel:index.html.twig',
+                array(
+                    'breadtypes' => $breadtypes,
+                ));
     }
 }

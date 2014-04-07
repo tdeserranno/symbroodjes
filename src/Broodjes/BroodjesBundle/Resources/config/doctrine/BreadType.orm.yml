@@ -1,0 +1,16 @@
+Broodjes\BroodjesBundle\Entity\BreadType:
+    type: entity
+    table: null
+    id:
+        id:
+            type: integer
+            id: true
+            generator:
+                strategy: AUTO
+    fields:
+        description:
+            type: string
+            length: 255
+        price:
+            type: float
+    lifecycleCallbacks: {  }
