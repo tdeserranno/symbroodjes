@@ -1,0 +1,13 @@
+Broodjes\BroodjesBundle\Entity\OrderItem:
+    type: entity
+    table: null
+    id:
+        id:
+            type: integer
+            id: true
+            generator:
+                strategy: AUTO
+    fields:
+        quantity:
+            type: integer
+    lifecycleCallbacks: {  }

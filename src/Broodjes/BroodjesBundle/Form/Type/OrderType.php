@@ -10,7 +10,7 @@ use Symfony\Component\Form\FormBuilderInterface;
  *
  * @author cyber01
  */
-class OrderType extends AbstractType
+class OrderItemType extends AbstractType
 {
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
@@ -31,6 +31,6 @@ class OrderType extends AbstractType
     
     public function getName()
     {
-        return 'order';
+        return 'orderitem';
     }
 }
