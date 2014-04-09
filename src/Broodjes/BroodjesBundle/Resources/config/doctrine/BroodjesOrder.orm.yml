@@ -10,4 +10,8 @@ Broodjes\BroodjesBundle\Entity\BroodjesOrder:
     fields:
         date:
             type: date
+    oneToMany:
+        orderitems:
+            targetEntity: OrderItem
+            mappedBy: broodjesorder
     lifecycleCallbacks: {  }

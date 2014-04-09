@@ -4,6 +4,7 @@ namespace Broodjes\BroodjesBundle\Form\Type;
 
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\FormBuilderInterface;
+use Symfony\Component\OptionsResolver\OptionsResolverInterface;
 
 /**
  * Description of OrderType
@@ -19,7 +20,7 @@ class OrderItemType extends AbstractType
                     'property' => 'description',
                     'expanded' => false,
                     'multiple' => false,))
-                ->add('topping', 'entity', array(
+                ->add('toppings', 'entity', array(
                     'class' => 'BroodjesBundle:Topping', 
                     'property' => 'description',
                     'expanded' => true,
@@ -27,6 +28,13 @@ class OrderItemType extends AbstractType
                     ))
                 ->add('quantity', 'integer')
                 ->add('Toevoegen', 'submit');
+    }
+    
+    public function setDefaultOptions(OptionsResolverInterface $resolver)
+    {
+        $resolver->setDefaults(array(
+            'data_class' => 'Broodjes\BroodjesBundle\Entity\OrderItem',
+        ));
     }
     
     public function getName()

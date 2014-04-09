@@ -5,29 +5,21 @@
 {% block content %}
 <h1>Bestelling</h1>
 <div class="container">
-    <form class="cart">
-        <h2>Huidige bestelling</h2>
+    <div>
+        <h2>Winkelmandje</h2>
+        {% for item in cart %}
         <div>
-            blablabla
-        </div>
-        <input type="submit" value="Bestelling plaatsen">
-    </form>
-    <form>
-        <h2>Nieuw broodje</h2>
-        <h3>Kies type broodje</h3>
-        <div>
-            <ul>
-            {% for breadtype in breadtypes %}
-                <li>{{ breadtype.description }}</li>
+            {{ item.quantity }}
+            {{ item.breadtype.description }}
+            {% for topping in item.toppings %}
+                {{topping.description}}
             {% endfor %}
-            </ul>
         </div>
-        <h3>Kies beleg</h3>
-        <div>
-            Beleg
-        </div>
-        <input type="submit" value="Broodje toevoegen">
-    </form>
-    
+        {% endfor %}
+    </div>
+    <div>
+        <h2>Nieuw broodje</h2>
+        {{ form(form) }}
+    </div>
 </div>
 {% endblock %}

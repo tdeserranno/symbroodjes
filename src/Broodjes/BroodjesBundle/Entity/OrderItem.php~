@@ -125,32 +125,4 @@ class OrderItem
     {
         return $this->toppings;
     }
-    /**
-     * @var \Broodjes\BroodjesBundle\Entity\BroodjesOrder
-     */
-    private $broodjesorder;
-
-
-    /**
-     * Set broodjesorder
-     *
-     * @param \Broodjes\BroodjesBundle\Entity\BroodjesOrder $broodjesorder
-     * @return OrderItem
-     */
-    public function setBroodjesorder(\Broodjes\BroodjesBundle\Entity\BroodjesOrder $broodjesorder = null)
-    {
-        $this->broodjesorder = $broodjesorder;
-
-        return $this;
-    }
-
-    /**
-     * Get broodjesorder
-     *
-     * @return \Broodjes\BroodjesBundle\Entity\BroodjesOrder 
-     */
-    public function getBroodjesorder()
-    {
-        return $this->broodjesorder;
-    }
 }

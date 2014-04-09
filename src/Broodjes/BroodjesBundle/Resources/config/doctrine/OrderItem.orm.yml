@@ -10,4 +10,27 @@ Broodjes\BroodjesBundle\Entity\OrderItem:
     fields:
         quantity:
             type: integer
+    manyToOne:
+        breadtype:
+            targetEntity: Breadtype
+            joinColumn:
+                name: breadtype_id
+                referencedColumnName: id
+        broodjesorder:
+            targetEntity: BroodjesOrder
+            inversedBy: orderitems
+            joinColumn:
+                name: broodjesorder_id
+                referencedColumnName: id
+    manyToMany:
+        toppings:
+            targetEntity: Topping
+            joinTable:
+                name: orderitems_toppings
+                joinColumns:
+                    orderitem_id:
+                        referencedColumnName: id
+                inverseJoinColumns:
+                    topping_id:
+                        referencedColumnName: id
     lifecycleCallbacks: {  }

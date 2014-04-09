@@ -10,6 +10,9 @@ namespace Broodjes\BroodjesBundle\Controller;
 
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Symfony\Component\HttpFoundation\Request;
+use Symfony\Component\HttpFoundation\Session;
+use Broodjes\BroodjesBundle\Entity\BroodjesOrder;
+use Broodjes\BroodjesBundle\Form\Type\BroodjesOrderType;
 use Broodjes\BroodjesBundle\Entity\OrderItem;
 use Broodjes\BroodjesBundle\Form\Type\OrderItemType;
 
@@ -40,9 +43,15 @@ class BestelController extends Controller
     
     public function indexAction(Request $request)
     {
+        //retrieve cart from session
+//        $session = new Session();
+//        $session->start();
+        $session = $request->getSession();
+        $cart = (!empty($session->get('cart'))) ? $session->get('cart') : array();
+        
         //create empty form & object for orderitem
-        $orderitem = new OrderItem();
-        $form = $this->createForm(new OrderItemType(), $orderitem);
+        $orderItem = new OrderItem();
+        $form = $this->createForm(new OrderItemType(), $orderItem);
         
         //handle form submission
         $form->handleRequest($request);
@@ -50,12 +59,19 @@ class BestelController extends Controller
        //validate formdata
         if ($form->isValid()) {
             //create object
-            $orderitem = $form->getData();
+            $orderItem = $form->getData();
             
-            //persist object
-            $em = $this->getDoctrine()->getManager();
-            $em->persist($orderitem);
-            $em->flush();
+            //persist object in DB
+//            $em = $this->getDoctrine()->getManager();
+//            $em->persist($orderitem);
+//            $em->flush();
+            
+            //persist object in cart
+            array_push($cart, $orderItem);
+            //persist cart in session
+            $session->set('cart', $cart);
+            
+            
             //redirect to self
             return $this->redirect($this->generateUrl('broodjes_bestel'));
         }
@@ -64,6 +80,7 @@ class BestelController extends Controller
         return $this->render('BroodjesBundle:Bestel:index.html.twig',
                 array(
                     'form' => $form->createView(),
+                    'cart' => $cart,
                 ));
     }
 }
