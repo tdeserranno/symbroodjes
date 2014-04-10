@@ -80,4 +80,13 @@ class BreadType
     {
         return $this->price;
     }
+    
+    /**
+     * Function that returns string combining description and price
+     * To be used for displaying during order process
+     */
+    public function getChoiceDescription()
+    {
+        return sprintf('%s - %s€', $this->description, $this->price);
+    }
 }

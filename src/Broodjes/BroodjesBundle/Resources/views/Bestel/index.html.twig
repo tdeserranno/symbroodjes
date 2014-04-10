@@ -1,5 +1,13 @@
 {% extends "BroodjesBundle::layout.html.twig" %}
 
+{# form render customization see http://symfony.com/doc/current/cookbook/form/form_customization.html #}
+{% form_theme form 'BroodjesBundle:Form:rows.html.twig' %}
+
+{% block stylesheets %}
+{{ parent() }}
+<link rel="stylesheet" href="{{asset('bundles/broodjes/css/orderform.css')}}">
+{% endblock %}
+
 {% block title %}{{parent()}}Bestel{% endblock %}
 
 {% block content %}
@@ -7,19 +15,41 @@
 <div class="container">
     <div>
         <h2>Winkelmandje</h2>
-        {% for item in cart %}
-        <div>
-            {{ item.quantity }}
-            {{ item.breadtype.description }}
-            {% for topping in item.toppings %}
-                {{topping.description}}
+        <table>
+            <thead>
+                <tr>
+                    <th>Aantal</th>
+                    <th>Beschrijving</th>
+                    <th>Eenheidsprijs</th>
+                    <th>Subtotaal</th>
+                </tr>
+            </thead>
+            {% for item in cart %}
+            <tbody>
+                <tr>
+                    <td>{{ item.quantity }}</td>
+                    <td>
+                        {{ item.breadtype.description }}
+                        {% for topping in item.toppings %}
+                            {{topping.description}}
+                        {% endfor %}
+                    </td>
+                    <td>{{ item.unitcost }}</td>
+                    <td>{{ item.totalcost }}</td>
+                </tr>
+            </tbody>
             {% endfor %}
-        </div>
-        {% endfor %}
+        </table>
+        
     </div>
     <div>
         <h2>Nieuw broodje</h2>
-        {{ form(form) }}
+        {{ form_start(form) }}
+        {{ form_row(form.breadtype, {'label':'Soort broodje' ,'attr':{'class':'breadtype'} }) }}
+        {{ form_row(form.toppings, {'label':'Kies beleg' ,'attr':{'class':'toppings'} }) }}
+        {{ form_row(form.quantity, {'label':'Aantal' ,'attr':{'class':'quantity'} }) }}
+        {{ form_rest(form) }}
+        {{ form_end(form) }}
     </div>
 </div>
 {% endblock %}

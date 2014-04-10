@@ -1,0 +1,38 @@
+/*
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+*/
+/* 
+    Created on : 10-apr-2014, 14:24:13
+    Author     : cyber01
+*/
+form {
+    padding-bottom: 1em;
+}
+
+form div {
+    margin: 0.5em;
+}
+
+form div label:first-child {
+    margin-right: 1em;
+}
+
+th, td {
+    padding: 0 0.5em;
+}
+
+div.breadtype {
+}
+
+div.toppings input {
+    margin-right: 1%;
+    vertical-align: top;
+}
+div.toppings  label {
+    display: inline-block;
+    width: 22%;
+    margin-bottom: 0.5em;
+    vertical-align: top;
+}

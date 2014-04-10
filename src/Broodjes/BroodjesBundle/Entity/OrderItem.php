@@ -153,4 +153,28 @@ class OrderItem
     {
         return $this->broodjesorder;
     }
+    
+    
+    /**
+     * Function that determines the actual cost of 1 sandwich
+     */
+    public function getUnitCost()
+    {
+        $cost = 0;
+        $cost += $this->breadtype->getPrice();
+        foreach ($this->toppings as $topping) {
+            $cost += $topping->getPrice();
+        }
+        
+        return $cost;
+    }
+    
+    /**
+     * Function that determines the total cost of a single orderitem
+     */
+    public function getTotalCost()
+    {
+        $cost = $this->getUnitCost();
+        return $cost * $this->getQuantity();
+    }
 }

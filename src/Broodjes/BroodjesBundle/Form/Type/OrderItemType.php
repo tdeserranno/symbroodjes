@@ -17,12 +17,12 @@ class OrderItemType extends AbstractType
     {
         $builder->add('breadtype', 'entity', array(
                     'class' => 'BroodjesBundle:BreadType',
-                    'property' => 'description',
+                    'property' => 'choicedescription',
                     'expanded' => false,
                     'multiple' => false,))
                 ->add('toppings', 'entity', array(
                     'class' => 'BroodjesBundle:Topping', 
-                    'property' => 'description',
+                    'property' => 'choicedescription',
                     'expanded' => true,
                     'multiple' => true,
                     ))
