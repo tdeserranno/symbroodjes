@@ -1,0 +1,36 @@
+{% extends "BroodjesBundle::layout.html.twig" %}
+
+{% block title %}{{parent()}}Bestelling voltooien{% endblock %}
+
+{% block content %}
+<h1>Bestelling voltooien</h1>
+<div class="container">
+    <h2>Bestelling {#voor {{order.date}}#}</h2>
+    <table>
+        <thead>
+            <tr>
+                <th>Aantal</th>
+                <th>Beschrijving</th>
+                <th>Eenheidsprijs</th>
+                <th>Subtotaal</th>
+            </tr>
+        </thead>
+        {% for item in order.orderitems %}
+        <tbody>
+            <tr>
+                <td>{{ item.quantity }}</td>
+                <td>
+                    {{ item.breadtype.description }}
+                    {% for topping in item.toppings %}
+                        {{topping.description}}
+                    {% endfor %}
+                </td>
+                <td>{{ item.unitcost }}</td>
+                <td>{{ item.totalcost }}</td>
+            </tr>
+        </tbody>
+        {% endfor %}
+    </table>
+    {{ form(form) }}
+</div>
+{% endblock %}

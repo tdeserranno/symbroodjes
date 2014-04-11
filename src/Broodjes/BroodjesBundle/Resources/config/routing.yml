@@ -4,3 +4,6 @@ broodjes_homepage:
 broodjes_bestel:
     pattern:  /bestel
     defaults: { _controller: BroodjesBundle:Bestel:index }
+broodjes_bestel_placeorder:
+    pattern: /plaatsbestelling
+    defaults: { _controller: BroodjesBundle:Bestel:placeorder }

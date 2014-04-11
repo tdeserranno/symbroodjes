@@ -16,9 +16,11 @@ Broodjes\BroodjesBundle\Entity\OrderItem:
             joinColumn:
                 name: breadtype_id
                 referencedColumnName: id
+            cascade: [persist]
         broodjesorder:
             targetEntity: BroodjesOrder
             inversedBy: orderitems
+            cascade: [persist]
             joinColumn:
                 name: broodjesorder_id
                 referencedColumnName: id
@@ -33,4 +35,5 @@ Broodjes\BroodjesBundle\Entity\OrderItem:
                 inverseJoinColumns:
                     topping_id:
                         referencedColumnName: id
+            cascade: [persist]
     lifecycleCallbacks: {  }
