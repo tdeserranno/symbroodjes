@@ -126,14 +126,14 @@ class BestelController extends Controller
                     $order->setDate(new \DateTime());
                     //persist order
 //                    echo 'PLACE DAMNIT';
-//                    $em = $this->getDoctrine()->getManager();
-//                    $em->persist($order);
-//                    $em->flush();
-                    print '<pre>';
-                    print_r($order);
-                    print '</pre>';
+                    $em = $this->getDoctrine()->getManager();
+                    $em->persist($order);
+                    $em->flush();
+//                    print '<pre>';
+//                    print_r($order);
+//                    print '</pre>';
                     //redirect to home
-//                    return $this->redirect($this->generateUrl('broodjes_homepage'));
+                    return $this->redirect($this->generateUrl('broodjes_homepage'));
                 }
             }
             

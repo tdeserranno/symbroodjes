@@ -52,4 +52,49 @@ class BroodjesOrder
     {
         return $this->date;
     }
+    /**
+     * @var \Doctrine\Common\Collections\Collection
+     */
+    private $orderitems;
+
+    /**
+     * Constructor
+     */
+    public function __construct()
+    {
+        $this->orderitems = new \Doctrine\Common\Collections\ArrayCollection();
+    }
+
+    /**
+     * Add orderitems
+     *
+     * @param \Broodjes\BroodjesBundle\Entity\OrderItem $orderitems
+     * @return BroodjesOrder
+     */
+    public function addOrderitem(\Broodjes\BroodjesBundle\Entity\OrderItem $orderitems)
+    {
+        $this->orderitems[] = $orderitems;
+
+        return $this;
+    }
+
+    /**
+     * Remove orderitems
+     *
+     * @param \Broodjes\BroodjesBundle\Entity\OrderItem $orderitems
+     */
+    public function removeOrderitem(\Broodjes\BroodjesBundle\Entity\OrderItem $orderitems)
+    {
+        $this->orderitems->removeElement($orderitems);
+    }
+
+    /**
+     * Get orderitems
+     *
+     * @return \Doctrine\Common\Collections\Collection 
+     */
+    public function getOrderitems()
+    {
+        return $this->orderitems;
+    }
 }

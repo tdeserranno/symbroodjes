@@ -11,21 +11,21 @@ Broodjes\BroodjesBundle\Entity\OrderItem:
         quantity:
             type: integer
     manyToOne:
+        broodjesorder:
+            targetEntity: BroodjesOrder
+            inversedBy: orderitems
+            joinColumn:
+                name: broodjesorder_id
+                referencedColumnName: id
         breadtype:
             targetEntity: Breadtype
             joinColumn:
                 name: breadtype_id
                 referencedColumnName: id
-            cascade: [persist]
-        broodjesorder:
-            targetEntity: BroodjesOrder
-            inversedBy: orderitems
-            cascade: [persist]
-            joinColumn:
-                name: broodjesorder_id
-                referencedColumnName: id
+            #cascade: [persist]
     manyToMany:
         toppings:
+            #cascade: [persist]
             targetEntity: Topping
             joinTable:
                 name: orderitems_toppings
@@ -35,5 +35,4 @@ Broodjes\BroodjesBundle\Entity\OrderItem:
                 inverseJoinColumns:
                     topping_id:
                         referencedColumnName: id
-            cascade: [persist]
     lifecycleCallbacks: {  }
