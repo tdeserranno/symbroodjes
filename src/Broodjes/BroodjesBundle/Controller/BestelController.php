@@ -127,6 +127,15 @@ class BestelController extends Controller
                     //persist order
 //                    echo 'PLACE DAMNIT';
                     $em = $this->getDoctrine()->getManager();
+                    
+                    //merge breadtype and toppings?
+                    foreach ($order->getOrderitems() as $item) {  
+                        $em->merge($item->getBreadtype());
+                        foreach ($item->getToppings() as $topping) {
+                            $em->merge($topping);
+                        }
+                    }
+                    
                     $em->persist($order);
                     $em->flush();
 //                    print '<pre>';

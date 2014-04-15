@@ -10,9 +10,23 @@ Broodjes\BroodjesBundle\Entity\BroodjesOrder:
     fields:
         date:
             type: date
+    #One-To-Many Bidirectional        
     oneToMany:
         orderitems:
             targetEntity: OrderItem
             mappedBy: broodjesorder
             cascade: [persist]
+    #One-To-Many Unidirectional
+#    manyToMany:
+#        orderitems:
+#            targetEntity: OrderItem
+#            joinTable:
+#                name: orders_orderitems
+#                joinColumns:
+#                    order_id:
+#                        referencedColumnName: id
+#                inverseJoinColumns:
+#                    orderitem_id:
+#                        referencedColumnName: id
+#                        unique: true
     lifecycleCallbacks: {  }
