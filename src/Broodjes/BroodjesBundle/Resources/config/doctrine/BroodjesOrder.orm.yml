@@ -1,6 +1,6 @@
 Broodjes\BroodjesBundle\Entity\BroodjesOrder:
     type: entity
-    table: null
+    table: broodjesorder
     id:
         id:
             type: integer
@@ -10,23 +10,18 @@ Broodjes\BroodjesBundle\Entity\BroodjesOrder:
     fields:
         date:
             type: date
-    #One-To-Many Bidirectional        
     oneToMany:
+        #order<-->orderitem, One-To-Many Bidirectional
         orderitems:
             targetEntity: OrderItem
             mappedBy: broodjesorder
-            cascade: [persist]
-    #One-To-Many Unidirectional
-#    manyToMany:
-#        orderitems:
-#            targetEntity: OrderItem
-#            joinTable:
-#                name: orders_orderitems
-#                joinColumns:
-#                    order_id:
-#                        referencedColumnName: id
-#                inverseJoinColumns:
-#                    orderitem_id:
-#                        referencedColumnName: id
-#                        unique: true
+            cascade: [persist, merge]
+    ManyToOne:
+        #order<-->user, Many-to-one Unidirectional
+        user:
+            targetEntity: User
+            joinColumn:
+                name: user_id
+                referencedColumnName: id
+            cascade: [merge]
     lifecycleCallbacks: {  }

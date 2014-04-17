@@ -78,9 +78,12 @@ class BestelController extends Controller
          //            $em->persist($orderitem);
          //            $em->flush();
 
+                     //set order on orderitem
+                     $orderItem->setBroodjesorder($order);
+                     
                      //add item to order
                      $order->addOrderitem($orderItem);
-                     //persist cart in session
+                     //set cart in session
                      $session->set('order', $order);
 
                      //redirect to self
@@ -128,19 +131,29 @@ class BestelController extends Controller
 //                    echo 'PLACE DAMNIT';
                     $em = $this->getDoctrine()->getManager();
                     
-                    //merge breadtype and toppings?
-                    foreach ($order->getOrderitems() as $item) {  
-                        $em->merge($item->getBreadtype());
-                        foreach ($item->getToppings() as $topping) {
-                            $em->merge($topping);
-                        }
-                    }
+                    //merge entity
+//                    foreach ($order->getOrderitems() as $item) {  
+//                        $em->merge($item->getBreadtype());
+//                        foreach ($item->getToppings() as $topping) {
+//                            $em->merge($topping);
+//                        }
+//                    }
+                    $order = $em->merge($order);
                     
                     $em->persist($order);
-                    $em->flush();
-//                    print '<pre>';
-//                    print_r($order);
-//                    print '</pre>';
+                    $em->flush($order);
+//                    var_dump($order);
+//                    foreach ($order->getOrderitems() as $item) {
+//                        var_dump($item);
+//                        foreach ($item->getToppings() as $topping) {
+//                            var_dump($topping);
+//                        }
+//                    }
+
+                    
+                    //clear session attribute
+                    $session->remove('order');
+                    
                     //redirect to home
                     return $this->redirect($this->generateUrl('broodjes_homepage'));
                 }

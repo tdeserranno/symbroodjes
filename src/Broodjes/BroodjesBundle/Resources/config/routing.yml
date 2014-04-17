@@ -7,3 +7,6 @@ broodjes_bestel:
 broodjes_bestel_placeorder:
     pattern: /plaatsbestelling
     defaults: { _controller: BroodjesBundle:Bestel:placeorder }
+broodjes_testbestel:
+    pattern: /testbestel
+    defaults: { _controller: BroodjesBundle:TestBestel:index }

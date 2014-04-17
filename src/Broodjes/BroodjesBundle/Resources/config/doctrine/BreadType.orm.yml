@@ -1,6 +1,6 @@
 Broodjes\BroodjesBundle\Entity\BreadType:
     type: entity
-    table: null
+    table: breadtype
     id:
         id:
             type: integer

@@ -1,6 +1,6 @@
 Broodjes\BroodjesBundle\Entity\Topping:
     type: entity
-    table: null
+    table: topping
     id:
         id:
             type: integer

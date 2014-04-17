@@ -1,0 +1,63 @@
+{% extends "BroodjesBundle::layout.html.twig" %}
+
+{# form render customization see http://symfony.com/doc/current/cookbook/form/form_customization.html #}
+{#{% form_theme orderform 'BroodjesBundle:Form:rows.html.twig' %}#}
+
+{% block stylesheets %}
+{{ parent() }}
+<link rel="stylesheet" href="{{asset('bundles/broodjes/css/orderform.css')}}">
+{% endblock %}
+
+{% block title %}{{parent()}}Bestel{% endblock %}
+
+{% block content %}
+<h1>Bestelling</h1>
+<div class="container">
+    {#
+    <div>
+        <h2>Winkelmandje</h2>
+        {% if order.orderitems is empty %}
+            Winkelmandje is leeg
+        {% else %}
+            <table>
+                <thead>
+                    <tr>
+                        <th>Aantal</th>
+                        <th>Beschrijving</th>
+                        <th>Eenheidsprijs</th>
+                        <th>Subtotaal</th>
+                    </tr>
+                </thead>
+                {% for item in order.orderitems %}
+                <tbody>
+                    <tr>
+                        <td>{{ item.quantity }}</td>
+                        <td>
+                            {{ item.breadtype.description }}
+                            {% for topping in item.toppings %}
+                                {{topping.description}}
+                            {% endfor %}
+                        </td>
+                        <td>{{ item.unitcost }}</td>
+                        <td>{{ item.totalcost }}</td>
+                    </tr>
+                </tbody>
+                {% endfor %}
+            </table>
+            {{form(orderconfirmform)}}
+        {% endif %}
+    </div>
+    #}
+    {#
+    <div>
+        <h2>Nieuw broodje</h2>
+        {{ form_start(orderform) }}
+        {{ form_row(orderform.breadtype, {'label':'Soort broodje' ,'attr':{'class':'breadtype'} }) }}
+        {{ form_row(orderform.toppings, {'label':'Kies beleg' ,'attr':{'class':'toppings'} }) }}
+        {{ form_row(orderform.quantity, {'label':'Aantal' ,'attr':{'class':'quantity'} }) }}
+        {{ form_rest(orderform) }}
+        {{ form_end(orderform) }}
+    </div>
+    #}
+</div>
+{% endblock %}

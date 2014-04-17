@@ -1,6 +1,6 @@
 Broodjes\BroodjesBundle\Entity\OrderItem:
     type: entity
-    table: null
+    table: orderitem
     id:
         id:
             type: integer
@@ -11,20 +11,25 @@ Broodjes\BroodjesBundle\Entity\OrderItem:
         quantity:
             type: integer
     manyToOne:
+        #orderitem<-->order, Many-to-one Bidirectional
+        #orderitem holds a reference back to broodjesorder
         broodjesorder:
             targetEntity: BroodjesOrder
             inversedBy: orderitems
             joinColumn:
                 name: broodjesorder_id
                 referencedColumnName: id
-            cascade: [persist]
+        #orderitem<-->breadtype, Many-to-one Unidirectional
+        #breadtype does not hold a reference back to orderitem
         breadtype:
             targetEntity: Breadtype
             joinColumn:
                 name: breadtype_id
                 referencedColumnName: id
-            #cascade: [persist]
+            cascade: [merge]
     manyToMany:
+        #orderitem<-->topping, Many-to-many Unidirectional
+        #toppings hold no reference back to orderitem
         toppings:
             targetEntity: Topping
             joinTable:
@@ -35,5 +40,5 @@ Broodjes\BroodjesBundle\Entity\OrderItem:
                 inverseJoinColumns:
                     topping_id:
                         referencedColumnName: id
-            #cascade: [persist]
+            cascade: [merge]
     lifecycleCallbacks: {  }
