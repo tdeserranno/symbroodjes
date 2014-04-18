@@ -9,6 +9,7 @@ use Doctrine\ORM\Mapping as ORM;
  */
 class BroodjesOrder
 {
+
     /**
      * @var integer
      */
@@ -19,6 +20,18 @@ class BroodjesOrder
      */
     private $date;
 
+    /**
+     * @var \Doctrine\Common\Collections\Collection
+     */
+    private $orderitems;
+
+    /**
+     * Constructor
+     */
+    public function __construct()
+    {
+        $this->orderitems = new \Doctrine\Common\Collections\ArrayCollection();
+    }
 
     /**
      * Get id
@@ -52,18 +65,6 @@ class BroodjesOrder
     {
         return $this->date;
     }
-    /**
-     * @var \Doctrine\Common\Collections\Collection
-     */
-    private $orderitems;
-
-    /**
-     * Constructor
-     */
-    public function __construct()
-    {
-        $this->orderitems = new \Doctrine\Common\Collections\ArrayCollection();
-    }
 
     /**
      * Add orderitems
@@ -96,5 +97,34 @@ class BroodjesOrder
     public function getOrderitems()
     {
         return $this->orderitems;
+    }
+
+    /**
+     * @var \Broodjes\BroodjesBundle\Entity\User
+     */
+    private $user;
+
+
+    /**
+     * Set user
+     *
+     * @param \Broodjes\BroodjesBundle\Entity\User $user
+     * @return BroodjesOrder
+     */
+    public function setUser(\Broodjes\BroodjesBundle\Entity\User $user = null)
+    {
+        $this->user = $user;
+
+        return $this;
+    }
+
+    /**
+     * Get user
+     *
+     * @return \Broodjes\BroodjesBundle\Entity\User 
+     */
+    public function getUser()
+    {
+        return $this->user;
     }
 }

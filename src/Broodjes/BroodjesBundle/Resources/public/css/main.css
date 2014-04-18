@@ -78,6 +78,20 @@ nav li span {
     vertical-align: middle;
 }
 
+/*^^^^ FLASH NOTICE ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^*/
+.flash-notice {
+    border: 2px solid rgba(255, 0, 0, 1.0);
+    background: rgba(255, 0, 0, 0.25);
+    text-align: center;
+}
+
+.flash-notice h2 {
+    font-size: 1em;
+    color: white;
+    background: rgba(255, 0, 0, 1.0);
+    margin: 0;
+}
+
 /*^^^^ HELPER ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^*/
 .listleft {
     float: left;

@@ -16,7 +16,7 @@ Broodjes\BroodjesBundle\Entity\BroodjesOrder:
             targetEntity: OrderItem
             mappedBy: broodjesorder
             cascade: [persist, merge]
-    ManyToOne:
+    manyToOne:
         #order<-->user, Many-to-one Unidirectional
         user:
             targetEntity: User

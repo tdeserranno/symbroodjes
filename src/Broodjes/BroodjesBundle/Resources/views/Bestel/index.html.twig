@@ -14,6 +14,13 @@
 <h1>Bestelling</h1>
 <div class="container">
     <div>
+        {% for flashMessage in app.session.flashbag.get('notice') %}
+        <div class="flash-notice">
+            <h2>Waarschuwing !</h2>
+            <p>{{ flashMessage }}</p>
+        </div>
+        {% endfor %}
+        
         <h2>Winkelmandje</h2>
         {% if order.orderitems is empty %}
             Winkelmandje is leeg

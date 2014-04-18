@@ -23,35 +23,26 @@ use Broodjes\BroodjesBundle\Form\Type\OrderConfirmationType;
  */
 class BestelController extends Controller
 {
-//    public function indexAction()
-//    {
-//        //retrieve all breadtypes
-//        //build query
-//        $repository = $this->getDoctrine()->getRepository('BroodjesBundle:BreadType');
-//        $query = $repository->createQueryBuilder('bread')
-//                ->getQuery();
-//        //get breadtypes
-//        $breadtypes = $query->getResult();
-//        
-//        
-//        //render page
-//        return $this->render('BroodjesBundle:Bestel:index.html.twig',
-//                array(
-//                    'breadtypes' => $breadtypes,
-//                ));
-//    }
-    
     public function indexAction(Request $request)
     {
         //retrieve order from session
-//        $session = new Session();
-//        $session->start();
         $session = $request->getSession();
         if (!empty($session->get('order'))) {
             $order = $session->get('order');
         } else {
             $order = new BroodjesOrder();
         }
+        
+        //flash message test
+//        $session->getFlashBag()->add('notice', 'Het is nu '.time());
+        
+        //flash time notice
+        $flashMessage = $this->get('broodjesUtils')->timeFlashNotice();
+        if ($flashMessage !== null) {
+            $session->getFlashBag()->set(
+                'notice', $flashMessage);
+        } 
+        
         
         //create empty form & object for orderitem
         $orderItem = new OrderItem();
@@ -98,6 +89,9 @@ class BestelController extends Controller
             }
         }
         
+//        $usr = $this->get('security.context')->getToken()->getUser();
+//        var_dump($usr);
+        
         //render page
         return $this->render('BroodjesBundle:Bestel:index.html.twig',
                 array(
@@ -125,6 +119,11 @@ class BestelController extends Controller
                 $confirmForm->handleRequest($request);
                 //validate form
                 if ($confirmForm->isValid()) {
+                    //get user
+                    $usr= $this->get('security.context')->getToken()->getUser();
+                    $order->setUser($usr);
+                    
+                    
                     //set order date
                     $order->setDate(new \DateTime());
                     //persist order

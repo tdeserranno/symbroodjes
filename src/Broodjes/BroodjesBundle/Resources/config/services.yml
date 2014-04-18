@@ -1,7 +1,11 @@
 parameters:
 #    broodjes.example.class: Broodjes\BroodjesBundle\Example
+    maxOrderHour: 15
 
 services:
 #    broodjes.example:
 #        class: %broodjes.example.class%
 #        arguments: [@service_id, "plain_value", %parameter%]
+    broodjesUtils:
+        class: Broodjes\BroodjesBundle\DependencyInjection\BroodjesUtils
+        arguments: [%maxOrderHour%]
