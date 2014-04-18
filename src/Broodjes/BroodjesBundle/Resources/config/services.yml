@@ -1,6 +1,8 @@
 parameters:
 #    broodjes.example.class: Broodjes\BroodjesBundle\Example
-    maxOrderHour: 15
+    maxOrderHour: 16
+    maxOrderMinutes: 13
+    maxOrderNoticeMinutes: 10
 
 services:
 #    broodjes.example:
@@ -8,4 +10,4 @@ services:
 #        arguments: [@service_id, "plain_value", %parameter%]
     broodjesUtils:
         class: Broodjes\BroodjesBundle\DependencyInjection\BroodjesUtils
-        arguments: [%maxOrderHour%]
+        arguments: [%maxOrderHour%, %maxOrderMinutes%, %maxOrderNoticeMinutes%]

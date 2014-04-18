@@ -11,22 +11,26 @@ namespace Broodjes\BroodjesBundle\DependencyInjection;
 class BroodjesUtils
 {
     private $param1;
+    private $param2;
+    private $param3;
     
-    function __construct($paramName1)
+    function __construct($param1, $param2, $param3)
     {
-        $this->param1 = $paramName1;
+        $this->param1 = $param1;
+        $this->param2 = $param2;
+        $this->param3 = $param3;
     }
     function timeFlashNotice()
     {
         $message = null;
-        $maxTime = mktime($this->param1, 0, 0);
+        $maxTime = mktime($this->param1, $this->param2, 0);
         $currentTime = time();
-        $noticeTimeDelta = 600;//10 minutes
+        $noticeTimeDelta = $this->param3 * 60;
         if (($maxTime - $currentTime) < $noticeTimeDelta) {
             $current = new \DateTime();
             $current->setTimestamp($currentTime);
             $message = 'Broodjes bestellen kan tot '.$this->param1
-                    .' uur. Het is nu '. $current->format('H:i:s');
+                    .'u'.$this->param2.'. Het is nu '. $current->format('H:i:s');
         }
         return $message;
     }

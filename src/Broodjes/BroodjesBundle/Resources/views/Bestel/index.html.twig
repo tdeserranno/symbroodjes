@@ -1,7 +1,9 @@
 {% extends "BroodjesBundle::layout.html.twig" %}
 
 {# form render customization see http://symfony.com/doc/current/cookbook/form/form_customization.html #}
-{% form_theme orderform 'BroodjesBundle:Form:rows.html.twig' %}
+{% if orderform is defined %}
+    {% form_theme orderform 'BroodjesBundle:Form:rows.html.twig' %}
+{% endif %}
 
 {% block stylesheets %}
 {{ parent() }}
@@ -50,9 +52,12 @@
                 </tbody>
                 {% endfor %}
             </table>
-            {{form(orderconfirmform)}}
+            {% if orderconfirmform is defined %}
+                {{form(orderconfirmform)}}
+            {% endif %}
         {% endif %}
     </div>
+    {% if orderform is defined %}
     <div>
         <h2>Nieuw broodje</h2>
         {{ form_start(orderform) }}
@@ -62,5 +67,6 @@
         {{ form_rest(orderform) }}
         {{ form_end(orderform) }}
     </div>
+    {% endif %}
 </div>
 {% endblock %}
