@@ -1,0 +1,48 @@
+{% extends "BroodjesBundle::layout.html.twig" %}
+
+{% block title %}{{parent()}}Bestel{% endblock %}
+
+{% block content %}
+<h1>Bestelling</h1>
+<div class="container">
+    {# Flash message #}
+    {% for flashMessage in app.session.flashbag.get('notice') %}
+        <div class="flash-notice">
+            <h2>Waarschuwing !</h2>
+            <p>{{ flashMessage }}</p>
+        </div>
+    {% endfor %}
+    
+    {# Order van vandaag #}
+    {% if order is not defined or order.orderitems is empty %}
+        <h2>Geen bestelling geplaatst</h2>
+    {% else %}
+        <h2>Bestelling voor vandaag</h2>
+        <table>
+            <thead>
+                <tr>
+                    <th>Aantal</th>
+                    <th>Beschrijving</th>
+                    <th>Eenheidsprijs</th>
+                    <th>Subtotaal</th>
+                </tr>
+            </thead>
+            {% for item in order.orderitems %}
+            <tbody>
+                <tr>
+                    <td>{{ item.quantity }}</td>
+                    <td>
+                        {{ item.breadtype.description }}
+                        {% for topping in item.toppings %}
+                            {{topping.description}}
+                        {% endfor %}
+                    </td>
+                    <td>{{ item.unitcost }}</td>
+                    <td>{{ item.totalcost }}</td>
+                </tr>
+            </tbody>
+            {% endfor %}
+        </table>
+    {% endif %}
+</div>
+{% endblock %}

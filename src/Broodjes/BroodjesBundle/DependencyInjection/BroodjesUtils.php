@@ -20,7 +20,7 @@ class BroodjesUtils
         $this->param2 = $param2;
         $this->param3 = $param3;
     }
-    function timeFlashNotice()
+    function timeNotice()
     {
         $message = null;
         $maxTime = mktime($this->param1, $this->param2, 0);
@@ -33,5 +33,16 @@ class BroodjesUtils
                     .'u'.$this->param2.'. Het is nu '. $current->format('H:i:s');
         }
         return $message;
+    }
+    
+    function timeCheck()
+    {
+        $maxTime = mktime($this->param1, $this->param2, 0);
+        $currentTime = time();
+        if ($currentTime >= $maxTime) {
+            return false;
+        } else {
+            return true;
+        }
     }
 }

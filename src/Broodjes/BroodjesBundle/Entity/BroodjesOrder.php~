@@ -99,4 +99,32 @@ class BroodjesOrder
         return $this->orderitems;
     }
 
+    /**
+     * @var \Broodjes\BroodjesBundle\Entity\User
+     */
+    private $user;
+
+
+    /**
+     * Set user
+     *
+     * @param \Broodjes\BroodjesBundle\Entity\User $user
+     * @return BroodjesOrder
+     */
+    public function setUser(\Broodjes\BroodjesBundle\Entity\User $user = null)
+    {
+        $this->user = $user;
+
+        return $this;
+    }
+
+    /**
+     * Get user
+     *
+     * @return \Broodjes\BroodjesBundle\Entity\User 
+     */
+    public function getUser()
+    {
+        return $this->user;
+    }
 }

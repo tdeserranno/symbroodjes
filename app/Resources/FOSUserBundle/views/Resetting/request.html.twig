@@ -1,0 +1,18 @@
+{% extends "FOSUserBundle::layout.html.twig" %}
+
+{% trans_default_domain 'FOSUserBundle' %}
+
+{% block stylesheets %}
+{{parent()}}
+<link rel="stylesheet" href="{{asset('bundles/broodjes/css/forms.css')}}">
+{% endblock %}
+
+{%block title%}{{parent()}}Wachtwoord resetten{%endblock%}
+
+{% block header %}Wachtwoord resetten
+{% endblock %}
+
+
+{% block fos_user_content %}
+{% include "FOSUserBundle:Resetting:request_content.html.twig" %}
+{% endblock fos_user_content %}

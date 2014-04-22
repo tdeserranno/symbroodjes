@@ -1,5 +1,6 @@
 Broodjes\BroodjesBundle\Entity\BroodjesOrder:
     type: entity
+    repositoryClass: Broodjes\BroodjesBundle\Entity\BroodjesOrderRepository
     table: broodjesorder
     id:
         id:

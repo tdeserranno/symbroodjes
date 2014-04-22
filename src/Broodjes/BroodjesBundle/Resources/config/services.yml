@@ -1,7 +1,7 @@
 parameters:
 #    broodjes.example.class: Broodjes\BroodjesBundle\Example
-    maxOrderHour: 16
-    maxOrderMinutes: 13
+    maxOrderHour: 16    
+    maxOrderMinutes: 40
     maxOrderNoticeMinutes: 10
 
 services:
