@@ -10,6 +10,7 @@
 .container {
     width: 80%;
     margin: 0 auto;
+    padding-bottom: 2em;
 }
 
 .content {
@@ -78,11 +79,78 @@ nav li span {
     vertical-align: middle;
 }
 
+/*^^^^ ORDER PANEL + TABLE ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^*/
+.order {
+    border: 2px solid rgba(0, 0, 0, 1.0);
+    margin: 1em 0;
+}
+
+.order p {
+    margin: 1em;
+}
+
+.order h2 {
+    margin: 0;
+    background: rgba(0, 0, 0, 0.75);
+    color: white;
+    padding: 0.25em 2em;
+}
+
+.order table {
+    margin: 0;
+    padding: 0;
+    width: 100%;
+}
+
+.order thead {
+    background: rgba(0, 0, 0, 0.25);
+    border-bottom: 1px solid rgba(0, 0, 0, 0.50);
+}
+
+.order tfoot {
+    background: rgba(0, 0, 0, 0.25);
+}
+
+.order tbody tr {
+    border-bottom: 1px solid rgba(0, 0, 0, 0.50);
+}
+
+.order th, .order td {
+    padding: 0.5em;
+    text-align: center;
+}
+
+.order td ul, .order td span {
+    vertical-align: top;
+}
+
+.order td span {
+    margin-left: 1em;
+}
+
+.order td ul {
+    display: inline-block;
+    margin: 0;
+    text-align: left;
+    padding-left: 1.25em;
+}
+.order .footerlabel {
+    text-align: right;
+    font-weight: bold;
+}
+
+
+/*^^^^ FLASH CONTAINER ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^*/
+.flash-container {
+    width: 100%;
+    text-align: center;
+}
 /*^^^^ FLASH NOTICE ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^*/
 .flash-notice {
     border: 2px solid rgba(255, 0, 0, 1.0);
     background: rgba(255, 0, 0, 0.25);
     text-align: center;
+    display: inline-block;
 }
 
 .flash-notice h2 {
@@ -92,18 +160,27 @@ nav li span {
     margin: 0;
 }
 
-/*^^^^ FLASH NOTICE ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^*/
+.flash-notice p {
+    margin: 1em;
+}
+
+/*^^^^ FLASH SUCCESS^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^*/
 .flash-success {
-    border: 2px solid rgba(255, 0, 0, 1.0);
-    background: rgba(255, 0, 0, 0.25);
+    border: 2px solid rgba(135, 215, 135, 1.0);
+    background: rgba(135, 215, 135, 0.25);
     text-align: center;
+    display: inline-block;
 }
 
 .flash-success h2 {
     font-size: 1em;
     color: white;
-    background: rgba(255, 0, 0, 1.0);
+    background: rgba(135, 215, 135, 1.0);
     margin: 0;
+}
+
+.flash-success p {
+    margin: 1em;
 }
 
 /*^^^^ HELPER ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^*/

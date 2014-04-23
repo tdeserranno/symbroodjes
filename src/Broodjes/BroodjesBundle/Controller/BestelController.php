@@ -34,11 +34,13 @@ class BestelController extends Controller
             //check DB for order for current user for current date
             $user = $this->get('security.context')->getToken()->getUser();
             $em = $this->getDoctrine()->getManager();
-            $order = $em->getRepository('BroodjesBundle:BroodjesOrder')
+            $orders = $em->getRepository('BroodjesBundle:BroodjesOrder')
                     ->findTodayByUser($user);
-            
-            
-            
+            if (!empty($orders)) {
+                $order = $orders[0];
+            } else {
+                $order = null;
+            }
             //test if order was found
             if (empty($order)) {
                 //generate order page
@@ -93,10 +95,6 @@ class BestelController extends Controller
                         }
                     }
                 }
-
-        //        $usr = $this->get('security.context')->getToken()->getUser();
-        //        var_dump($usr);
-
                 //render page
                 return $this->render('BroodjesBundle:Bestel:index.html.twig',
                         array(
@@ -107,11 +105,6 @@ class BestelController extends Controller
             } else {
                 //generate flash message
                 $session->getFlashBag()->set('notice', 'U heeft vandaag al een bestelling geplaatst');
-                
-                $order[0]->getOrderitems();
-//                print '<pre>';
-//                print_r($order);
-//                print '</pre>';
                 //render orderhistory page
                 return $this->render('BroodjesBundle:Bestel:orderhistory.html.twig', array(
                     'order' => $order,
@@ -171,14 +164,6 @@ class BestelController extends Controller
 
                         $em->persist($order);
                         $em->flush($order);
-    //                    var_dump($order);
-    //                    foreach ($order->getOrderitems() as $item) {
-    //                        var_dump($item);
-    //                        foreach ($item->getToppings() as $topping) {
-    //                            var_dump($topping);
-    //                        }
-    //                    }
-
 
                         //clear session attribute
                         $session->remove('order');

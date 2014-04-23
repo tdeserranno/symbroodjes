@@ -127,4 +127,14 @@ class BroodjesOrder
     {
         return $this->user;
     }
+    
+    public function getTotalCost()
+    {
+        $cost = 0;
+        foreach ($this->orderitems as $orderItem) {
+            $cost += $orderItem->getTotalCost();
+        }
+        
+        return $cost;
+    }
 }

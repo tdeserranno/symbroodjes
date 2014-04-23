@@ -16,42 +16,66 @@
 <h1>Bestelling</h1>
 <div class="container">
     <div>
+        <div class="flash-container">
         {% for flashMessage in app.session.flashbag.get('notice') %}
-        <div class="flash-notice">
-            <h2>Waarschuwing !</h2>
-            <p>{{ flashMessage }}</p>
-        </div>
+            <div class="flash-notice">
+                <h2>Waarschuwing !</h2>
+                <p>{{ flashMessage }}</p>
+            </div>
         {% endfor %}
+        {% for flashMessage in app.session.flashbag.get('ordersuccess') %}
+            <div class="flash-success">
+                <h2>Succes !</h2>
+                <p>{{ flashMessage }}</p>
+            </div>
+        {% endfor %}
+        </div>
         
-        <h2>Winkelmandje</h2>
         {% if order.orderitems is empty %}
-            Winkelmandje is leeg
+        <div class="order">
+            <h2>Winkelmandje</h2>
+            <p>Winkelmandje is leeg</p>
+        </div>
         {% else %}
-            <table>
-                <thead>
-                    <tr>
-                        <th>Aantal</th>
-                        <th>Beschrijving</th>
-                        <th>Eenheidsprijs</th>
-                        <th>Subtotaal</th>
-                    </tr>
-                </thead>
-                {% for item in order.orderitems %}
-                <tbody>
-                    <tr>
-                        <td>{{ item.quantity }}</td>
-                        <td>
-                            {{ item.breadtype.description }}
-                            {% for topping in item.toppings %}
-                                {{topping.description}}
-                            {% endfor %}
-                        </td>
-                        <td>{{ item.unitcost }}</td>
-                        <td>{{ item.totalcost }}</td>
-                    </tr>
-                </tbody>
-                {% endfor %}
-            </table>
+            <div class="order">
+                <h2>Winkelmandje</h2>
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Aantal</th>
+                            <th>Beschrijving</th>
+                            <th>Eenheidsprijs</th>
+                            <th>Subtotaal</th>
+                        </tr>
+                    </thead>
+                    <tfoot>
+                        <tr>
+                            <td colspan="3" class="footerlabel">Totaal</td>
+                            <td>{{ order.totalcost }} &euro;</td>
+                        </tr>
+                    </tfoot>
+                    <tbody>
+                        {% for item in order.orderitems %}
+                        <tr>
+                            <td>{{ item.quantity }}</td>
+                            <td>
+                                <span>
+                                    Type brood: {{ item.breadtype.description }}
+                                </span>
+                                <span>Toppings:</span>
+                                <ul>
+                                    {% for topping in item.toppings %}
+                                        <li>{{topping.description}}</li>
+                                    {% endfor %}
+                                </ul>
+                            </td>
+                            <td>{{ item.unitcost }} &euro;</td>
+                            <td>{{ item.totalcost }} &euro;</td>
+                        </tr>
+                        {% endfor %}
+                    </tbody>
+                </table>
+            </div>
             {% if orderconfirmform is defined %}
                 {{form(orderconfirmform)}}
             {% endif %}

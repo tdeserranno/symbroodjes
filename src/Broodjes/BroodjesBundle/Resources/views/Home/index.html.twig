@@ -7,12 +7,20 @@
 <div class="container">
     <p>Op deze website kan u broodjes bestellen voor de lunchpauze in het
     opleidingscentrum van de VDAB in Oostende.</p>
-
+    
+    <div class="flash-container">
     {% for flashMessage in app.session.flashbag.get('notice') %}
         <div class="flash-notice">
             <h2>Waarschuwing !</h2>
             <p>{{ flashMessage }}</p>
         </div>
     {% endfor %}
+    {% for flashMessage in app.session.flashbag.get('ordersuccess') %}
+        <div class="flash-success">
+            <h2>Succes !</h2>
+            <p>{{ flashMessage }}</p>
+        </div>
+    {% endfor %}
+    </div>
 </div>
 {% endblock %}
