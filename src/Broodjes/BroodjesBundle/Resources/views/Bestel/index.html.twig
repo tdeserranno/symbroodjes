@@ -82,9 +82,9 @@
         {% endif %}
     </div>
     {% if orderform is defined %}
-    <div>
-        <h2>Nieuw broodje</h2>
+    <div class="newitem">
         {{ form_start(orderform) }}
+        <h2>Nieuw broodje</h2>
         {{ form_row(orderform.breadtype, {'label':'Soort broodje' ,'attr':{'class':'breadtype'} }) }}
         {{ form_row(orderform.toppings, {'label':'Kies beleg' ,'attr':{'class':'toppings'} }) }}
         {{ form_row(orderform.quantity, {'label':'Aantal' ,'attr':{'class':'quantity'} }) }}

@@ -19,20 +19,42 @@ form div label:first-child {
     margin-right: 1em;
 }
 
-th, td {
-    padding: 0 0.5em;
+.newitem form {
+    background: rgba(255,0,0,0.25);
+    padding: 1em;
 }
 
-div.breadtype {
+.newitem h2 {
+    margin-top: 0;
+}
+
+div.breadtype, div.toppings , div.quantity {
+    background: rgba(255,0,0,0.25);
+    padding: 0.5em;
+    margin: 0;
+    margin-bottom: 1em;
+}
+div.toppings .toppings {
+    background: none;
+    margin: 0;
+}
+
+div.breadtype label, div.toppings label:first-child, div.quantity label {
+    font-weight: bold;
+    padding-right: 4em;
 }
 
 div.toppings input {
     margin-right: 1%;
+    vertical-align: middle;
+}
+div.toppings .toppings  label {
+    display: inline-block;
+    width: 30%;
+    margin-bottom: 1em;
     vertical-align: top;
 }
-div.toppings  label {
-    display: inline-block;
-    width: 22%;
-    margin-bottom: 0.5em;
-    vertical-align: top;
+
+div.toppings .toppings  label:hover {
+    background: rgba(255, 255, 255, 0.25);
 }

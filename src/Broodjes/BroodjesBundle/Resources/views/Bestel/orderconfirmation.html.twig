@@ -5,32 +5,45 @@
 {% block content %}
 <h1>Bestelling voltooien</h1>
 <div class="container">
-    <h2>Bestelling {#voor {{order.date}}#}</h2>
-    <table>
-        <thead>
-            <tr>
-                <th>Aantal</th>
-                <th>Beschrijving</th>
-                <th>Eenheidsprijs</th>
-                <th>Subtotaal</th>
-            </tr>
-        </thead>
-        {% for item in order.orderitems %}
-        <tbody>
-            <tr>
-                <td>{{ item.quantity }}</td>
-                <td>
-                    {{ item.breadtype.description }}
-                    {% for topping in item.toppings %}
-                        {{topping.description}}
-                    {% endfor %}
-                </td>
-                <td>{{ item.unitcost }}</td>
-                <td>{{ item.totalcost }}</td>
-            </tr>
-        </tbody>
-        {% endfor %}
-    </table>
+    <div class="order">
+        <h2>Bestelling voor vandaag</h2>
+        <table>
+            <thead>
+                <tr>
+                    <th>Aantal</th>
+                    <th>Beschrijving</th>
+                    <th>Eenheidsprijs</th>
+                    <th>Subtotaal</th>
+                </tr>
+            </thead>
+            <tfoot>
+                <tr>
+                    <td colspan="3" class="footerlabel">Totaal</td>
+                    <td>{{ order.totalcost }} &euro;</td>
+                </tr>
+            </tfoot>
+            <tbody>
+                {% for item in order.orderitems %}
+                <tr>
+                    <td>{{ item.quantity }}</td>
+                    <td>
+                        <span>
+                            Type brood: {{ item.breadtype.description }}
+                        </span>
+                        <span>Toppings:</span>
+                        <ul>
+                            {% for topping in item.toppings %}
+                                <li>{{topping.description}}</li>
+                            {% endfor %}
+                        </ul>
+                    </td>
+                    <td>{{ item.unitcost }} &euro;</td>
+                    <td>{{ item.totalcost }} &euro;</td>
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    </div>
     {{ form(form) }}
 </div>
 {% endblock %}

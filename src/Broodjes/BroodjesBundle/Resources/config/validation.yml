@@ -1,0 +1,6 @@
+# BroodjesBundle validation
+Broodjes\BroodjesBundle\Entity\OrderItem:
+    properties:
+        quantity:
+            - GreaterThan:
+                value: 0

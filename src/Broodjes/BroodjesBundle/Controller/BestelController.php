@@ -36,13 +36,8 @@ class BestelController extends Controller
             $em = $this->getDoctrine()->getManager();
             $orders = $em->getRepository('BroodjesBundle:BroodjesOrder')
                     ->findTodayByUser($user);
-            if (!empty($orders)) {
-                $order = $orders[0];
-            } else {
-                $order = null;
-            }
-            //test if order was found
-            if (empty($order)) {
+            //test if orders were found
+            if (empty($orders)) {
                 //generate order page
                 //retrieve order from session
                 if (!empty($session->get('order'))) {
@@ -67,7 +62,8 @@ class BestelController extends Controller
                     'action' => $this->generateUrl('broodjes_bestel_placeorder'),
                 ));
 
-                //handle forms, determine which was submitted and handle it 
+                //handle forms, determine which was submitted and handle it
+                //source: http://www.craftitonline.com/2011/06/symfony2-multiple-forms-different-from-embedded-forms/
                 if ($request->getMethod() === 'POST') {
                     if ($request->request->has('orderitem')) {
                         //handle orderitem form
@@ -75,9 +71,9 @@ class BestelController extends Controller
 
                         //validate formdata
                          if ($orderItemForm->isValid()) {
-                             //create object
+                             //get object from formdata
                              $orderItem = $orderItemForm->getData();
-                             //set order on orderitem
+                             //set order on orderitem (for correct bidirectional association)
                              $orderItem->setBroodjesorder($order);
                              //add item to order
                              $order->addOrderitem($orderItem);
@@ -91,6 +87,7 @@ class BestelController extends Controller
                     if ($request->request->has('orderconfirmation')) {
                         //handle orderconfirmation form
                         if ($orderConfirmForm->isValid()) {
+                            //redirect to confirmation page
                             return $this->redirect($this->generateUrl('broodjes_bestel_placeorder'));
                         }
                     }
@@ -103,6 +100,7 @@ class BestelController extends Controller
                             'order' => $order,
                         ));
             } else {
+                $order = $orders[0];
                 //generate flash message
                 $session->getFlashBag()->set('notice', 'U heeft vandaag al een bestelling geplaatst');
                 //render orderhistory page
@@ -144,24 +142,16 @@ class BestelController extends Controller
                     if ($confirmForm->isValid()) {
                         //get user
                         $usr= $this->get('security.context')->getToken()->getUser();
+                        //set user on order (for correct association)
                         $order->setUser($usr);
-
-
+                        
                         //set order date
                         $order->setDate(new \DateTime());
+                        
                         //persist order
-    //                    echo 'PLACE DAMNIT';
                         $em = $this->getDoctrine()->getManager();
-
-                        //merge entity
-    //                    foreach ($order->getOrderitems() as $item) {  
-    //                        $em->merge($item->getBreadtype());
-    //                        foreach ($item->getToppings() as $topping) {
-    //                            $em->merge($topping);
-    //                        }
-    //                    }
+                        //merge unmanaged order entity with current Entity Manager
                         $order = $em->merge($order);
-
                         $em->persist($order);
                         $em->flush($order);
 
@@ -177,9 +167,6 @@ class BestelController extends Controller
                 }
 
             } 
-
-
-
             //render page
             return $this->render('BroodjesBundle:Bestel:orderconfirmation.html.twig',
                     array(
