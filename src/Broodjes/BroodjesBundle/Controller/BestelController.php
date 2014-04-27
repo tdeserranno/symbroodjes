@@ -75,13 +75,24 @@ class BestelController extends Controller
                              $orderItem = $orderItemForm->getData();
                              //set order on orderitem (for correct bidirectional association)
                              $orderItem->setBroodjesorder($order);
-                             //add item to order
-                             $order->addOrderitem($orderItem);
+                             //check if new item exists in order
+                             $existingItem = $this->get('broodjesUtils')->itemExists($order, $orderItem);
+                             var_dump($existingItem);
+                             if ($existingItem === false) {
+                                 //add item to order
+                                 $order->addOrderitem($orderItem);
+                             } else {
+                                 //increment quantity of existing item
+                                 $orderItems = $order->getOrderitems();
+                                 $quantity = $orderItems[$existingItem]->getQuantity() + $orderItem->getQuantity();
+                                 $orderItems[$existingItem]->setQuantity($quantity);
+                             }
+                             
                              //set cart in session
                              $session->set('order', $order);
 
                              //redirect to self
-                             return $this->redirect($this->generateUrl('broodjes_bestel'));
+//                             return $this->redirect($this->generateUrl('broodjes_bestel'));
                          }
                     }
                     if ($request->request->has('orderconfirmation')) {
