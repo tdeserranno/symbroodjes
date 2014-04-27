@@ -77,7 +77,6 @@ class BestelController extends Controller
                              $orderItem->setBroodjesorder($order);
                              //check if new item exists in order
                              $existingItem = $this->get('broodjesUtils')->itemExists($order, $orderItem);
-                             var_dump($existingItem);
                              if ($existingItem === false) {
                                  //add item to order
                                  $order->addOrderitem($orderItem);
