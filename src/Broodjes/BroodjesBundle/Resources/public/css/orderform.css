@@ -20,7 +20,7 @@ form div label:first-child {
 }
 
 .newitem form {
-    background: rgba(255,0,0,0.25);
+    background: rgba(165, 70, 45,0.25);
     padding: 1em;
 }
 
@@ -29,7 +29,7 @@ form div label:first-child {
 }
 
 div.breadtype, div.toppings , div.quantity {
-    background: rgba(255,0,0,0.25);
+    background: rgba(165, 70, 45,0.25);
     padding: 0.5em;
     margin: 0;
     margin-bottom: 1em;
@@ -56,5 +56,5 @@ div.toppings .toppings  label {
 }
 
 div.toppings .toppings  label:hover {
-    background: rgba(255, 255, 255, 0.25);
+    background: rgba(165, 70, 45, 0.25);
 }

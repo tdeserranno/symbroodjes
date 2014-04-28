@@ -34,7 +34,7 @@ nav {
     background: rgba(0, 0, 0, 0.1);
 }
 .content h1 {
-    background: rgba(255,0,0,0.5);
+    background: rgba(165,70,45,0.5);
     color: #F7EDCB;
 }
 
@@ -81,7 +81,7 @@ nav li span {
 
 /*^^^^ ORDER PANEL + TABLE ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^*/
 .order {
-    border: 2px solid rgba(255, 0, 0, 1.0);
+    border: 2px solid rgba(165, 70, 45, 1.0);
     margin: 1em 0;
 }
 
@@ -91,7 +91,7 @@ nav li span {
 
 .order h2 {
     margin: 0;
-    background: rgba(255, 0, 0, 0.75);
+    background: rgba(165, 70, 45, 0.75);
     color: white;
     padding: 0.25em 1em;
 }
@@ -103,16 +103,16 @@ nav li span {
 }
 
 .order thead {
-    background: rgba(255, 0, 0, 0.25);
+    background: rgba(165, 70, 45, 0.25);
     border-bottom: 1px solid rgba(255, 0, 0, 0.50);
 }
 
 .order tfoot {
-    background: rgba(255, 0, 0, 0.25);
+    background: rgba(165, 70, 45, 0.25);
 }
 
 .order tbody tr {
-    border-bottom: 1px solid rgba(255, 0, 0, 0.50);
+    border-bottom: 1px solid rgba(165, 70, 45, 0.50);
 }
 
 .order th, .order td {
