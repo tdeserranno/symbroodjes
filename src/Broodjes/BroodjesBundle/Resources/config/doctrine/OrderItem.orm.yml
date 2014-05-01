@@ -22,7 +22,7 @@ Broodjes\BroodjesBundle\Entity\OrderItem:
         #orderitem<-->breadtype, Many-to-one Unidirectional
         #breadtype does not hold a reference back to orderitem
         breadtype:
-            targetEntity: Breadtype
+            targetEntity: BreadType
             joinColumn:
                 name: breadtype_id
                 referencedColumnName: id
